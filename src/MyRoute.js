@@ -23,6 +23,6 @@ const MyRoute =()=>{
             </Routes>
         </Router>
     )
-}
+};
 
 export default MyRoute;

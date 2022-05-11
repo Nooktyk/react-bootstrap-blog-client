@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
 import { getUser,logout } from "../service/authorize";
 
 const NavbarComponent =()=>{
@@ -27,6 +27,6 @@ const NavbarComponent =()=>{
             </ul>
         </nav>
     )
-}
+};
 
-export default NavbarComponent
+export default NavbarComponent;

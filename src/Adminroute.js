@@ -1,6 +1,3 @@
-// ทำงานกับ Myroute
-// ตรวจสอบการ login ของ route
-
 import { getUser } from "./service/authorize";
 import { Navigate, Outlet } from "react-router-dom";
 

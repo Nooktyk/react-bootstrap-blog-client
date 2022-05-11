@@ -8,38 +8,34 @@ import { getUser, getToken } from "./service/authorize";
 
 function App() {
   
-  const [blogs,setBlogs] = useState([])
+  const [blogs,setBlogs] = useState([]);
   
   const fetchData =()=>{
     axios
     .get(`${process.env.REACT_APP_API}/blogs`)
     .then(response=>{ 
-      setBlogs(response.data) 
+      setBlogs(response.data) ;
     })
     .catch(err=>alert(err)); 
-  }
+  };
   
   useEffect(()=>{
-    fetchData()
+    fetchData();
   },[]) 
 
-  // ฟังก์ชันยืนยันการลบบทความ
   const confirmDelete =(slug)=>{
-    // alert(slug)
     Swal.fire({
       title:"คุณต้องการลบบทความหรือไม่",
       icon:"warning",
       showCancelButton:true
     })
-    // เมื่อกดปุ่ม Ok หรือ cancle ให้ทำ
     .then((result)=>{
       if(result.isConfirmed){
-        deleteBlog(slug) // เรียกใช้ฟังก์ชันลบบทความ
+        deleteBlog(slug);
       }
-    })
-  }
+    });
+  };
 
-  // ส่ง req ไป API ให้ลบข้อมูล
   const deleteBlog =(slug)=>{
     axios
     .delete(`${process.env.REACT_APP_API}/blog/${slug}`,
@@ -49,12 +45,11 @@ function App() {
       }
     })
     .then(response=>{
-      Swal.fire("Deleted",response.data.message,"success")
-      fetchData() // เมื่อลบแล้วให้ดึงบทความล่าสุด
+      Swal.fire("Deleted",response.data.message,"success");
+      fetchData();
     })
     .catch(err=>console.log(err))
-    
-  }
+  };
 
   return (
     <div className="container p-5">
@@ -78,6 +73,6 @@ function App() {
       ))}
     </div>
   );
-}
+};
 
 export default App;
